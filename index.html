@@ -10,6 +10,9 @@
       --text:#e7ecf3;
       --muted:#9db2cf;
       --primary:#2dd4bf; /* teal */
+      --secondary:#6366f1; /* indigo */
+      --accent:#f43f5e; /* rose */
+      --warning:#f59e0b; /* amber */
       --primary-ink:#063b36;
       --ring: rgba(45, 212, 191, 0.35);
     }
@@ -19,8 +22,15 @@
 .topbar{
   position:sticky;top:0;z-index:50;
   backdrop-filter:saturate(140%) blur(8px);
-  background:linear-gradient(180deg, rgba(18,26,43,0.9), rgba(18,26,43,0.6));
+  background:linear-gradient(90deg, var(--secondary), var(--primary), var(--accent), var(--warning));
+  background-size:400% 400%;
+  animation:gradientFlow 10s ease infinite;
   border-bottom:1px solid rgba(255,255,255,0.06);
+}
+@keyframes gradientFlow{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
 .wrap{max-width:1100px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;gap:12px}
 
@@ -41,6 +51,15 @@
 
 .btn-primary{background:var(--primary);color:#052c2a}
 .btn-primary:hover{filter:saturate(115%)}
+
+.btn-secondary{background:var(--secondary);color:#fff}
+.btn-secondary:hover{filter:brightness(1.1)}
+
+.btn-accent{background:var(--accent);color:#fff}
+.btn-accent:hover{filter:brightness(1.1)}
+
+.btn-warning{background:var(--warning);color:#1f1f1f}
+.btn-warning:hover{filter:brightness(1.1)}
 
 .btn-ghost{background:transparent;border-color:rgba(255,255,255,.12);color:var(--text)}
 .btn-ghost:hover{background:rgba(255,255,255,.04)}
@@ -79,28 +98,17 @@
 
   <!-- Action Buttons -->
   <div class="stack">
-    <!-- WhatsApp: replace number here if needed -->
-    <a class="btn btn-primary" id="btn-whatsapp" href="https://wa.me/923039232389?text=Hi%20-%20I%20want%20details%20about%20Forex%20Master%20Dashboard" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-      <svg class="i" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-9.83 17.6L1 23l5.07-1.29A11.5 11.5 0 1 0 12 .5Zm6.63 16.57c-.28.8-1.36 1.28-2.17 1.45-.58.12-1.34.21-3.89-.8-3.27-1.35-5.37-4.67-5.54-4.88-.17-.21-1.32-1.76-1.32-3.36s.83-2.38 1.13-2.71c.28-.33.75-.48 1.2-.48.14 0 .27 0 .39.01.34.01.51.04.73.57.28.69.97 2.38 1.05 2.56.09.18.14.4.03.61-.1.21-.16.34-.31.53-.16.18-.33.4-.47.54-.15.15-.31.31-.14.61.17.3.76 1.24 1.63 2.01 1.12.99 2.07 1.31 2.37 1.45.3.14.48.12.66-.07.18-.18.76-.89.96-1.2.2-.3.41-.25.68-.15.28.1 1.76.83 2.06.98.3.15.5.22.57.34.07.12.07.69-.21 1.49Z"/></svg>
-      WhatsApp
-    </a>
-    <!-- Call -->
-    <a class="btn btn-ghost" href="tel:+923039232389" aria-label="Call +92 303 9232389">
-      <svg class="i" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1v3.5a1 1 0 0 1-1 1C11.07 21.81 2.19 12.93 2.19 2.99a1 1 0 0 1 1-1H6.7a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.24 1.02l-2.2 2.2Z"/></svg>
-      Call
-    </a>
-    <!-- Copy number -->
-    <button class="btn btn-ghost" id="btn-copy" type="button" aria-label="Copy phone number">
-      <svg class="i" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 1H4a2 2 0 0 0-2 2v12h2V3h12V1Zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Zm0 16H8V7h11v14Z"/></svg>
-      Copy
-    </button>
+    <a class="btn btn-primary" id="btn-whatsapp" href="https://wa.me/923039232389?text=Hi%20-%20I%20want%20details%20about%20Forex%20Master%20Dashboard" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">WhatsApp</a>
+    <a class="btn btn-secondary" href="tel:+923039232389" aria-label="Call +92 303 9232389">Call</a>
+    <button class="btn btn-accent" id="btn-copy" type="button" aria-label="Copy phone number">Copy</button>
+    <a class="btn btn-warning" href="#" aria-label="More Info">More Info</a>
   </div>
 </div>
 
   </header>  <!-- Placeholder hero content -->  <main class="hero">
     <div class="card">
       <h1>Welcome to Forex Master Dashboard</h1>
-      <p>Use the WhatsApp button above to get access details, pricing, and support. This is placeholder content — plug in your live widgets, charts, or login module here.</p>
+      <p>Now buttons have multiple colors with gradient top bar animation.</p>
     </div>
   </main>  <script>
     // Copy to clipboard
@@ -114,15 +122,5 @@
         alert('Could not copy. Number: +92 303 9232389');
       }
     });
-
-    // Optional: ensure correct WhatsApp URL format if number is changed later
-    const waBtn = document.getElementById('btn-whatsapp');
-    const normalize = (num) => num.replace(/[^\d]/g,'').replace(/^\+/, '');
-    function setWhatsAppNumber(num){
-      const n = normalize(num);
-      const text = encodeURIComponent('Hi - I want details about Forex Master Dashboard');
-      waBtn.href = `https://wa.me/${n.startsWith('92')?n:('92'+n)}?text=${text}`;
-    }
-    // Example: setWhatsAppNumber('+92 303 9232389'); // already set above
   </script></body>
 </html>
